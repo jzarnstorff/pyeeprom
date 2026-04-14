@@ -1,0 +1,5 @@
+Create a subpackage ``pyeeprom.common``
+
+Python modules within ``pyeeprom.common`` will be function and class
+definitions shared between any other subpackages of the ``pyeeprom``
+project.
