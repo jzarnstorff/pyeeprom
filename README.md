@@ -8,7 +8,7 @@
 
 After successfully installing `Poetry`, install the project's dependencies:
 
-    poetry install --with dev
+    poetry install --with dev,docs
 
 Source the virtual environment:
 
