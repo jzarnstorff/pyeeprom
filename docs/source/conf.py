@@ -14,6 +14,7 @@ SOURCE_DIR = Path(__file__).resolve().parent
 PROJECT_DIR = SOURCE_DIR.parents[1]
 PYPROJECT_TOML = PROJECT_DIR / "pyproject.toml"
 
+sys.path.insert(0, str(SOURCE_DIR.joinpath("extensions")))
 sys.path.insert(0, str(PROJECT_DIR))
 
 with PYPROJECT_TOML.open(mode="rb") as f:
@@ -27,7 +28,9 @@ release = data["project"]["version"]
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = []
+extensions = [
+    "execute_pyfile",
+]
 
 templates_path = ["_templates"]
 exclude_patterns = []
