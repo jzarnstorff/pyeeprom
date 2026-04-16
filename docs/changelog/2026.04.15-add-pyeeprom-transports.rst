@@ -1,0 +1,5 @@
+Create a subpackage ``pyeeprom.transports``
+
+Python modules within ``pyeeprom.transports`` will be definitions
+for any transport layer by means where data can be sent over an
+appropriate bus.
