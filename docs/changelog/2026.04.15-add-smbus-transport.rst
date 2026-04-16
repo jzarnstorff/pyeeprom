@@ -1,0 +1,11 @@
+Add ``pyeeprom.transports.smbus_transport`` module
+
+Add class ``SMBusTransport`` as a transport layer for communicating
+with an I2C EEPROM device over SMBus.
+
+``SMBusTransport`` abstracts different read/write strategies depending on:
+    - The EEPROM's offset length (1-byte or 2-byte addressing)
+    - The capabilities of the underlying SMBus implementation
+
+Its read and write methods automatically selects the most efficient
+available method.
