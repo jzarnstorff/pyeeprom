@@ -1,0 +1,4 @@
+Add ``pyeeprom.transports.transport`` module
+
+Add a ``Transport`` protocol that defines the
+interface used to communicate with EEPROMs.
