@@ -11,6 +11,10 @@ dependencies = [
 ]
 
 
+[project.optional-dependencies]
+smbus3 = ["smbus3 (>=0.5.5,<0.6.0)"]
+
+
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
