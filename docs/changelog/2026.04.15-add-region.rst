@@ -1,0 +1,11 @@
+Add ``pyeeprom.common.region`` module
+
+Add ``Region`` class which represents a contiguous number of offsets
+within an EEPROM of a given length starting from a beginning offset.
+
+This is particularly useful as a region could specify a small or large
+number of contiguous offsets (up to total number of offsets within the
+EEPROM) where your data could be written to or read from, and validations
+can be made to ensure that the data does not exceed a specified region to
+keep any data that may already be stored in the EEPROM safe from being
+overwritten.
