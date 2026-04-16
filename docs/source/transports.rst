@@ -6,3 +6,4 @@ Transports
    :caption: Modules:
 
    transport
+   smbus_transport
