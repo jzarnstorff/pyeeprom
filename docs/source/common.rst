@@ -6,3 +6,4 @@ Common
    :caption: Modules:
 
    eeprom_page
+   region
