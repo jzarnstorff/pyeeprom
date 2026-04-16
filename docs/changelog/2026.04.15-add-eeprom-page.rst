@@ -1,0 +1,7 @@
+Add ``pyeeprom.common.eeprom_page`` module
+
+Add classes:
+    - ``EEPROMPage``
+    - ``I2CEEPROMPage``
+
+These classes represent one internal page of an EEPROM device and an I2C EEPROM device respectively.
