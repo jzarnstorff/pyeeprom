@@ -1,0 +1,8 @@
+Add ``pyeeprom.eeprom.i2c`` subpackage
+
+Add nested subpackage ``pyeeprom.eeprom.i2c`` specifically for class
+definitions of I2C EEPROM devices.
+
+Add class ``I2CEEPROMFactory`` which is a factory that can discover,
+load, and register ``I2CEEPROM`` from Python modules that stored on
+disk.
