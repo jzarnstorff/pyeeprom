@@ -6,4 +6,5 @@ API Reference
    :caption: API:
 
    common
+   eeprom
    transports
