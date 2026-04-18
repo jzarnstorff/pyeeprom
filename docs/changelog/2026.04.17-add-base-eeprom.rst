@@ -1,0 +1,15 @@
+Add ``pyeeprom.eeprom.base_eeprom`` module
+
+Create an abstract base class ``EEPROM`` representing an EEPROM device.
+
+The base ``EEPROM`` class provides a high-level interface for reading,
+writing, and erasing data using logical regions. Concrete implementations
+must define the low-level ``_read`` and ``_write`` methods.
+
+The base ``EEPROM`` class implements methods such as:
+    - ``__len__``
+    - ``__setitem__``
+    - ``__getitem__``
+    - ``__delitem__``
+
+This gives concrete EEPROMs classes an array-like feel to them.
