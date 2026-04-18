@@ -6,3 +6,4 @@ EEPROM
    :caption: Modules:
 
    base_eeprom
+   i2c_eeprom
