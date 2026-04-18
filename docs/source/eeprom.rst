@@ -7,3 +7,4 @@ EEPROM
 
    base_eeprom
    i2c_eeprom
+   i2c
