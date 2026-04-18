@@ -1,0 +1,4 @@
+Create a subpackage ``pyeeprom.eeprom``
+
+Python modules within ``pyeeprom.eeprom``
+will be definitions of various EEPROM devices.
