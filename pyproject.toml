@@ -31,6 +31,7 @@ pytest-cov = "^7.1.0"
 sphinx = "^9.1.0"
 furo = "^2025.12.19"
 
+
 [tool.isort]
 line_length = 120
 profile = "black"
@@ -44,3 +45,9 @@ target-version = ["py312"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "--cov=pyeeprom --cov-report term-missing -v"
+
+
+[tool.coverage.run]
+omit = [
+    "pyeeprom/eeprom/i2c/*",
+]
