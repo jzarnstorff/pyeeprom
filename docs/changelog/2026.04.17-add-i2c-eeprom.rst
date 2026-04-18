@@ -1,0 +1,12 @@
+Add ``pyeeprom.eeprom.i2c_eeprom`` module
+    
+Add concrete EEPROM implementation, ``I2CEEPROM``, which uses an I2C
+bus as the transport layer. This class handles EEPROM devices that
+are accessed over I2C, including logic for page-aligned reads/writes
+and multi-block (stacked device) configurations.
+
+Class definitions of I2C EEPROMs inheriting from ``I2CEEPROM`` should
+override methods such as ``adjust_device_address`` and ``recalculate_offset``
+where necessary to be able to straddle multi-address chip boundaries
+to access the total capacity of an I2C EEPROM as if the object is one
+contiguous array.
