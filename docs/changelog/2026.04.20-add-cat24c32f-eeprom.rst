@@ -1,0 +1,46 @@
+Add ``CAT24C32F`` EEPROM
+
+Add I2C EEPROM definition to ``pyeeprom`` for CAT24C32F EEPROM
+device based off of datasheet `cat24c32-d
+<https://www.onsemi.com/download/data-sheet/pdf/cat24c32-d.pdf>`_
+
+
+The CAT24C32F EEPROM is found at address ``0x50``:
+
+.. code-block::
+
+    pi@raspberrypi:~/pyeeprom $ i2cdetect -y 1
+        0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+    00:                         -- -- -- -- -- -- -- -- 
+    10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+    20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+    30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+    40: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+    50: 50 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+    60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+    70: -- -- -- -- -- -- -- --                         
+    pi@raspberrypi:~/pyeeprom $ 
+
+
+Example I2C communication with CAT24C32F EEPROM:
+
+.. code-block:: python
+
+    >>> from pyeeprom import I2CEEPROMFactory, Region, SMBusTransport
+    >>> from smbus3 import SMBus
+    >>>
+    >>> transport = SMBusTransport(bus=SMBus(1))
+    >>> factory = I2CEEPROMFactory()
+    >>> eeprom = factory.get(i2c_eeprom="cat24c32f", address=0x50, transport=transport)
+    >>>
+    >>> region = Region(offset=0x00, length=32)
+    >>> eeprom.write(region, b"Hello from pyeeprom")
+    >>> data = eeprom.read(region)
+    >>> data
+    b'Hello from pyeeprom\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff'
+    >>> 
+    >>> eeprom.erase(region)
+    >>> data = eeprom.read(region)
+    >>> data
+    b'\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff'
+    >>> 
