@@ -6,9 +6,13 @@
 
     curl -sSL https://install.python-poetry.org | python3 -
 
-After successfully installing `Poetry`, install the project's dependencies:
+After successfully installing `Poetry`, clone the repository and install the project's dependencies:
 
     poetry install --with dev,docs
+
+If using `SMBusTransport`, install the optional dependency:
+
+    poetry install --extras smbus3
 
 Source the virtual environment:
 
