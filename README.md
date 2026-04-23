@@ -32,3 +32,9 @@ Source the virtual environment:
 Install `pre-commit` to set up the git hook scripts to run linters on the source code when making commits. More information on `pre-commit` can be found at [pre-commit.com](https://pre-commit.com/)
 
     pre-commit install
+
+The project's documentation can be built using `Sphinx` by running:
+
+    poetry run sphinx-build -aTE docs/source/ docs/build/html/
+
+Open `docs/build/html/index.rst` with a web browser to read the project's documentation.
