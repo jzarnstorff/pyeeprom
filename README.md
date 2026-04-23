@@ -11,6 +11,16 @@ It provides:
   - access to all offsets within an EEPROM even those which consume multiple I2C addresses.
   - a method to allow users to define their own library of EEPROMs and register them for use with the PyEEPROM package.
 
+## Installation
+
+Install the PyEEPROM package into your project using `pip`:
+
+    pip install git+https://github.com/jzarnstorff/pyeeprom.git
+
+If using `SMBusTransport` as an I2C communication transport layer to communicate with I2C EEPROM devices, use the `smbus3` extra when installing the PyEEPROM package:
+
+    pip install git+https://github.com/jzarnstorff/pyeeprom.git[smbus3]
+
 ## Developer Requirements
 
 `Poetry` is used to manage the project's dependencies and can be installed using the installer directly from [install.python-poetry.org](https://install.python-poetry.org/). The script can be executed directly using `curl` and `python` from your Linux environment.
