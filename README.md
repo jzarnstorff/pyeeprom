@@ -1,5 +1,16 @@
 # PyEEPROM
 
+## Overview
+
+PyEEPROM is a package for reading bytes from and writing bytes to an EEPROM using Python.
+
+It provides:
+  - multiple ways to interact with an EEPROM by:
+    - the EEPROM object's read, write, and erase methods.
+    - an array-like syntax to index or slice into an EEPROM object for read, write, and erase operations.
+  - access to all offsets within an EEPROM even those which consume multiple I2C addresses.
+  - a method to allow users to define their own library of EEPROMs and register them for use with the PyEEPROM package.
+
 ## Developer Requirements
 
 `Poetry` is used to manage the project's dependencies and can be installed using the installer directly from [install.python-poetry.org](https://install.python-poetry.org/). The script can be executed directly using `curl` and `python` from your Linux environment.
