@@ -1,0 +1,53 @@
+Add ``AT24LC1025`` EEPROM
+
+Add I2C EEPROM definition to ``pyeeprom`` for EEPROM AT24C08D
+device based off of datasheet `at24lc1025
+<https://ww1.microchip.com/downloads/aemDocuments/documents/MPD/ProductDocuments/DataSheets/24AA1025-24LC1025-24FC1025-1024-Kbit-I2C-Serial-EEPROM-20001941M.pdf>`_
+
+The AT24LC1025 EEPROM is found at addresses ``0x50`` and ``0x54``:
+
+.. code-block::
+
+    pi@raspberrypi:~/pyeeprom $ i2cdetect -y 1
+        0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+    00:                         -- -- -- -- -- -- -- -- 
+    10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+    20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+    30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+    40: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+    50: 50 -- -- -- 54 -- -- -- -- -- -- -- -- -- -- -- 
+    60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+    70: -- -- -- -- -- -- -- --                         
+    pi@raspberrypi:~/pyeeprom $ 
+    pi@raspberrypi:~/pyeeprom $ 
+
+Example I2C communication with AT24LC1025 EEPROM:
+
+.. code-block:: python
+
+    >>> from pyeeprom import I2CEEPROMFactory, Region, SMBusTransport
+    >>> from smbus3 import SMBus
+    >>> 
+    >>> transport = SMBusTransport(bus=SMBus(1))
+    >>> factory = I2CEEPROMFactory()
+    >>> 
+    >>> factory.eeproms
+    ['at24c01d', 'cat24c32f', 'at24c08d', 'at24c04d', 'at24lc1025']
+    >>> 
+    >>> eeprom = factory.get(i2c_eeprom="at24lc1025", address=0x50, transport=transport)
+    >>> 
+    >>> region = Region(offset=0x00, length=len(eeprom))  # define a region the size of the entire EEPROM
+    >>> data = eeprom.read(region)
+    >>> len(data)
+    131072
+    >>> 
+    >>> import random
+    >>> 
+    >>> write_data = random.randbytes(len(eeprom))
+    >>> eeprom.write(region, write_data)
+    >>> 
+    >>> read_data = eeprom.read(region)
+    >>> assert write_data == read_data  # verify bytes read from EEPROM matches random bytes written previously
+    >>> 
+    >>> eeprom.erase(region)  # erase entire EEPROM
+    >>> 
